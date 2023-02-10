@@ -1,0 +1,24 @@
+****************Save Module****************
+this module can save any type of data,Without checkFile Name,Path,Exists or not
+
+For Load Data
+-only thing you have to do Call "SaveDistributorManager.GetSaveData()" method for load data
+
+For Save Data
+-if Auto Save bool checked then it saves automatic OnAppQuit and OnAppPaused events
+On cases that you Want to save in specific times you can call "SaveDistributorManager.SaveData()"
+
+Encrypt With Aes
+if Encrypt With Aes toggle checked it Encrypt file With Aes Algorithm with Password in Settings
+
+Pretty Format
+if Pretty Format toggle checked it Makes json file more readable
+
+thats it you are ready to use congratz.
+
+@@@@@@Important Note@@@@@@@
+*You can use in every life cycle methods
+
+*To use SaveModule properly Add SaveRoot prefab to the scene
+*you can change settings from Tools/VaultSave
+

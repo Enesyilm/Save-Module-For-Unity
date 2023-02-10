@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be91085920be471093a0a5a8569f2c2e, type: 3}
+  m_Name: VaultSaveDefaults
+  m_EditorClassIdentifier: 
+  SystemData:
+    Password: nsnYGEZqCky3qmstRsuhSKaFDRg2UYru
+    AutoSave: 1
+    EncryptWithAes: 1
+    PrettyFormat: 1
+  SaveConfigData:
+    FileName: VaultSave
