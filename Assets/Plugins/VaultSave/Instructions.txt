@@ -19,6 +19,3 @@ thats it you are ready to use congratz.
 @@@@@@Important Note@@@@@@@
 *You can use in every life cycle methods
 
-*To use SaveModule properly Add SaveRoot prefab to the scene
-*you can change settings from Tools/VaultSave
-

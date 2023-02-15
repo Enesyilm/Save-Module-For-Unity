@@ -17,5 +17,6 @@ MonoBehaviour:
     AutoSave: 1
     EncryptWithAes: 1
     PrettyFormat: 1
+    AutoSaveTypes: 16
   SaveConfigData:
     FileName: VaultSave

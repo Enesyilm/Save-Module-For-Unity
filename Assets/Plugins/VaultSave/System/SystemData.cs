@@ -1,6 +1,8 @@
 using System;
+using UnityEngine.Serialization;
+using VaultSave.AutoSave;
 
-namespace ValueSave.Systems
+namespace VaultSave.Systems
 {
     [Serializable]
     public class SystemData
@@ -9,5 +11,6 @@ namespace ValueSave.Systems
         public bool AutoSave=true;
         public bool EncryptWithAes=false;
         public bool PrettyFormat=true;
+        [FormerlySerializedAs("AutoSaveOn")] public AutoSaveTypes AutoSaveTypes;
     }
 }

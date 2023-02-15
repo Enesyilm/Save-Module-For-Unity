@@ -1,8 +1,8 @@
 using UnityEngine;
-using ValueSave.Data;
-using ValueSave.Managers;
+using VaultSave.SaveConfig;
+using VaultSave.Saver;
 
-namespace ValueSave.Examples
+namespace VaultSave.Examples
 {
     public class SaveTester : MonoBehaviour
     {
@@ -32,7 +32,7 @@ namespace ValueSave.Examples
 
         private void AssignSaveData()
         {
-            _gameData=SaveDistributorManager.GetSaveData();
+            _gameData=SaveDistributor.GetSaveData();
         }
 
         private void GetCurrentNumber()

@@ -4,11 +4,12 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
-using ValueSave.Data;
+using VaultSave.AutoSave;
+using VaultSave.SaveConfig;
 using Directory = System.IO.Directory;
 using File = System.IO.File;
 
-namespace ValueSave.Editor
+namespace VaultSave.Editor
 {
     public class SaveManagerWindow:EditorWindow
     {
@@ -27,7 +28,6 @@ namespace ValueSave.Editor
         private void OnEnable()
         {
             if(_vaultSaveDefaults is null) GetVaultDefaultsData();
-            InitTextures();
         }
 
         private void GetVaultDefaultsData()
@@ -36,11 +36,7 @@ namespace ValueSave.Editor
             EditorUtility.SetDirty(_vaultSaveDefaults);
 
         }
-
-        private void InitTextures()
-        {
-            
-        }
+        
         private void DrawSettings()
         {
             GUILayout.BeginArea(_settingsLayout);
@@ -54,9 +50,9 @@ namespace ValueSave.Editor
         {
             EditorGUIUtility.labelWidth = 100;
             DrawLayouts();
-            DrawHeaders();
             DrawSettings();
         }
+        
         private void DrawLayouts()
         {
             var style = new GUIStyle(GUI.skin.label) {alignment = TextAnchor.MiddleCenter};
@@ -105,17 +101,18 @@ namespace ValueSave.Editor
             }
             void AutoSaveToggle(GUIStyle guıStyle)
             {
-                EditorGUI.BeginChangeCheck();
                 GUILayout.BeginHorizontal(guıStyle, GUILayout.ExpandWidth(true));
                 GUILayout.FlexibleSpace();
                 _vaultSaveDefaults.SystemData.AutoSave =
                     (Boolean)EditorGUILayout.Toggle("Auto Save", _vaultSaveDefaults.SystemData.AutoSave);
                 GUILayout.FlexibleSpace();
                 GUILayout.EndHorizontal();
-                if (EditorGUI.EndChangeCheck())
-                {
-                    //InitConfiguration();
-                }
+                GUILayout.BeginHorizontal(guıStyle, GUILayout.ExpandWidth(true));
+                EditorGUILayout.LabelField("Auto Save On this LifeCycles: ");
+                _vaultSaveDefaults.SystemData.AutoSaveTypes=(AutoSaveTypes)EditorGUILayout.EnumFlagsField(_vaultSaveDefaults.SystemData.AutoSaveTypes);
+                GUILayout.EndHorizontal();
+
+               
             }
             void PrettyFormatToggle(GUIStyle guıStyle)
             {
@@ -147,7 +144,8 @@ namespace ValueSave.Editor
             {
                 ClearDataPath();
             }
-            
+
+           
             RandomPassButton(style);
         }
 
@@ -207,9 +205,5 @@ namespace ValueSave.Editor
             }
         }
 
-        private void DrawHeaders()
-        {
-            
-        }
     }
 }
