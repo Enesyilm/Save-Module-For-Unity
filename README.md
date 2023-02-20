@@ -69,7 +69,7 @@
 
 
 
-<!-- ABOUT THE PROJECT
+<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 There are many great Modules available on internet; however, I didn't find one that really suited my needs so I created this enhanced one. 
@@ -93,7 +93,7 @@ Of course, no one Save Module will serve all projects since your needs may be di
 
 
 
-<!-- GETTING STARTED -->
+<!-- GETTING STARTED
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
