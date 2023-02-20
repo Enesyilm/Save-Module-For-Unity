@@ -69,7 +69,7 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
+<!-- ABOUT THE PROJECT
 ## About The Project
 
 There are many great Modules available on internet; however, I didn't find one that really suited my needs so I created this enhanced one. 
@@ -126,7 +126,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+ -->
 
 <!-- USAGE EXAMPLES -->
 ## Usage
