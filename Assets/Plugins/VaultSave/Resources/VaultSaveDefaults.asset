@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91085920be471093a0a5a8569f2c2e, type: 3}
   m_Name: VaultSaveDefaults
   m_EditorClassIdentifier: 
-  SystemData:
+  vsSystemData:
     Password: nsnYGEZqCky3qmstRsuhSKaFDRg2UYru
     AutoSave: 1
-    EncryptWithAes: 1
+    EncryptWithAes: 0
     PrettyFormat: 1
-    AutoSaveTypes: 16
-  SaveConfigData:
+    AutoSaveKeys:
+    - key
+    vsAutoSaveTypes: 24
+  vsSaveConfigData:
     FileName: VaultSave

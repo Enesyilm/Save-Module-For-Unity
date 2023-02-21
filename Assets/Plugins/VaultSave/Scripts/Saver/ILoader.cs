@@ -4,6 +4,6 @@ namespace VaultSave.Saver
 {
     public interface ILoader
     {
-        T Execute<T>(string path, SystemData password) where T : ISaveableEntity;
+        T Execute<T>(string path, VSSystemData password);
     }
 }

@@ -11,7 +11,6 @@ namespace VaultSave.AutoSave
 
         public void SaveSelectedDatas()
         {
-            Debug.Log("VAR");
             SaveDistributor.SaveAutoData();
         }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using VaultSave.Systems;
 
 namespace VaultSave.SaveConfig
@@ -6,7 +7,8 @@ namespace VaultSave.SaveConfig
     [CreateAssetMenu(fileName = "VaultSave", menuName = "VaultSave", order = 0)]
     public class VaultSaveDefaults : ScriptableObject
     {
-        public SystemData SystemData=new SystemData();
-        public SaveConfigData SaveConfigData=new SaveConfigData(new JsonConfigData());
+        public VSSystemData vsSystemData=new VSSystemData();
+
+        public VSSaveConfigData vsSaveConfigData=new VSSaveConfigData(new VSJsonConfigData());
     }
 }

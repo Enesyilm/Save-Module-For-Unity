@@ -8,11 +8,11 @@ namespace VaultSave.Saver
     {
         private static VaultSaveDefaults _vaultSaveDefaults;
 
-        private static GameData _gameData;
-        
-        private static SaveConfigData _datSaver=new SaveConfigData(new DatConfigData());
-        private static SaveConfigData _jsonSaver=new SaveConfigData(new JsonConfigData());
-        
+        //private static GameData _gameData;
+
+        private static readonly VSSaveConfigData _datSaver = new VSSaveConfigData(new VSDatConfigData());
+        private static VSSaveConfigData _jsonSaver = new VSSaveConfigData(new VSJsonConfigData());
+
         private static SaveController _saveController;
         private const string _autoSave = "VaultAutoSaver";
 
@@ -24,68 +24,71 @@ namespace VaultSave.Saver
 
         private static void CheckAutoSave()
         {
-            if (_vaultSaveDefaults.SystemData.AutoSave)
+            if (_vaultSaveDefaults.vsSystemData.AutoSave)
             {
                 GameObject gameObject = new GameObject();
                 gameObject.name = _autoSave;
-                gameObject.AddComponent<VaultAutoSave>().SaveOn = _vaultSaveDefaults.SystemData.AutoSaveTypes;
+                VSAutoSave vsAutoSave = gameObject.AddComponent<VSAutoSave>();
+                vsAutoSave.SaveOn = _vaultSaveDefaults.vsSystemData.vsAutoSaveTypes;
             }
         }
 
         private static void InitConfiguration()
         {
-            if (_vaultSaveDefaults.SystemData.EncryptWithAes)
+            if (_vaultSaveDefaults.vsSystemData.EncryptWithAes)
             {
                 InitWithEncrypt();
             }
-            else if(! _vaultSaveDefaults.SystemData.EncryptWithAes)
+            else if (!_vaultSaveDefaults.vsSystemData.EncryptWithAes)
             {
                 InitWithoutEncrypt();
             }
-            
+
             void InitWithoutEncrypt()
             {
-                _vaultSaveDefaults.SaveConfigData = _jsonSaver;
+                _vaultSaveDefaults.vsSaveConfigData = _jsonSaver;
             }
+
             void InitWithEncrypt()
             {
-                _vaultSaveDefaults.SaveConfigData = _datSaver;
-
+                _vaultSaveDefaults.vsSaveConfigData = _datSaver;
             }
         }
-        
+
         private static void InitAllConfigs()
         {
             GetVaultDefaults();
-            GetSaveData();
         }
 
         private static void GetVaultDefaults()
-        { 
+        {
             _vaultSaveDefaults = Resources.Load<VaultSaveDefaults>("VaultSaveDefaults");
             InitConfiguration();
-           _saveController = new SaveController(_vaultSaveDefaults.SaveConfigData,_vaultSaveDefaults.SystemData);
+            _saveController = new SaveController(_vaultSaveDefaults.vsSaveConfigData, _vaultSaveDefaults.vsSystemData);
         }
 
-        public static GameData GetSaveData()
+        public static T GetSaveData<T>(string saveKey,T saveData)
         {
-            GameData GetData()
+            T GetData()
             {
-                return _saveController.PreLoadData(new GameData());
+                return _saveController.EnsureLoadData(saveKey,saveData);
             }
-            if (_gameData is null)
-            {
-                _gameData = GetData();
-            }
-            return _gameData;
-        }
-        
-        public static void SaveData()
-        {
-            if (_gameData is null)GetSaveData();
-            _saveController.PreSaveData(_gameData);
-        }
-        
 
+            return GetData();
+        }
+
+        public static void SaveData<T>(string key,T saveData)
+        {
+            _saveController.EnsureSaveData(key,saveData);
+        }
+        public static void SaveData(string key)
+        {
+            _saveController.EnsureSaveAllData();
+        }
+
+        public static void SaveAutoData()
+        {
+            _saveController.EnsureSaveAllData();
+        }
     }
 }
